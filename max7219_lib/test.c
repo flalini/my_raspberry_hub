@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 01:14:01 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/02 02:37:50 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/02 02:52:32 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int		main(void)
 	spi_matrix_print(ms);
 	delay(2000);
 	spi_2byte_print(SHUTDOWN, 0x00);
+	ms_free(ms);
 	exit(0);
 }
