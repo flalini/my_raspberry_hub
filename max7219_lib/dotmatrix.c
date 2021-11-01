@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:20:07 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/02 02:13:32 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/02 02:45:34 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,19 @@ t_matrixstate	*ms_alloc(size_t size)
 		if (!check_calloc((void *)&(new->state[i]), size, sizeof(unsigned char))) {
 			while (i > 0)
 				free(new->state[i]);
+			free(new->state);
 			free(new);
 			return (NULL);
 		}
 	return (new);
+}
+
+void			ms_free(t_matrixstate *ms)
+{
+	for (int i = 0; i < 8; ++i)
+		free(ms->state[i]);
+	free(ms->state);
+	free(ms);
 }
 
 void			spi_2byte_write(unsigned char r, unsigned char d)

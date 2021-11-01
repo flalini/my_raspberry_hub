@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 21:07:57 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/02 01:33:04 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/02 02:42:56 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_matrixstate
 }				t_matrixstate;
 
 t_matrixstate	*ms_alloc(size_t size);
+void			ms_free(t_matrixstate *ms);
 void			spi_2byte_write(unsigned char r, unsigned char d);
 void			spi_2byte_print(unsigned char r, unsigned char d);
 void			spi_layer_print(int size, unsigned char layer, unsigned char *d);
