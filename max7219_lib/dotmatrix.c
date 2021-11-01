@@ -6,28 +6,28 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:20:07 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/02 01:30:43 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/02 02:13:32 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dotmatrix.h"
 
-t_matrixstate	*msalloc(size_t size)
+t_matrixstate	*ms_alloc(size_t size)
 {
 	if (size <= 0 || size > MAXMATRIX)
 		return (NULL);
 
 	t_matrixstate	*new;
 
-	if (!check_malloc(&new, sizeof(t_matrixstate)))
+	if (!check_malloc((void *)&new, sizeof(t_matrixstate)))
 		return (NULL);
 	new->matrix_num = size;
-	if (!check_malloc(&(new->state), 8 * sizeof(unsigned char *))) {
+	if (!check_malloc((void *)&(new->state), 8 * sizeof(unsigned char *))) {
 		free(new);
 		return (NULL);
 	}
 	for (size_t i = 0; i < 8; ++i)
-		if (!check_calloc(&(new->state[i]), size, sizeof(unsigned char))) {
+		if (!check_calloc((void *)&(new->state[i]), size, sizeof(unsigned char))) {
 			while (i > 0)
 				free(new->state[i]);
 			free(new);
@@ -47,13 +47,13 @@ void			spi_2byte_write(unsigned char r, unsigned char d)
 		digitalWrite(CLOCK, LOW);
 		digitalWrite(DATA, r & 0x08);
 		digitalWrite(CLOCK, HIGH);
-		r << 1;
+		r <<= 1;
 	}
 	for (int i = 0; i < 8; ++i) {
 		digitalWrite(CLOCK, LOW);
 		digitalWrite(DATA, d & 0x80);
 		digitalWrite(CLOCK, HIGH);
-		d << 1;
+		d <<= 1;
 	}
 }
 
