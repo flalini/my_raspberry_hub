@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:20:07 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/02 02:45:34 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/02 14:38:12 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 t_matrixstate	*ms_alloc(size_t size)
 {
 	if (size <= 0 || size > MAXMATRIX)
-		return (NULL);
+		return NULL;
 
 	t_matrixstate	*new;
 
 	if (!check_malloc((void *)&new, sizeof(t_matrixstate)))
-		return (NULL);
+		return NULL;
 	new->matrix_num = size;
 	if (!check_malloc((void *)&(new->state), 8 * sizeof(unsigned char *))) {
 		free(new);
-		return (NULL);
+		return NULL;
 	}
 	for (size_t i = 0; i < 8; ++i)
 		if (!check_calloc((void *)&(new->state[i]), size, sizeof(unsigned char))) {
@@ -32,9 +32,9 @@ t_matrixstate	*ms_alloc(size_t size)
 				free(new->state[i]);
 			free(new->state);
 			free(new);
-			return (NULL);
+			return NULL;
 		}
-	return (new);
+	return new;
 }
 
 void			ms_free(t_matrixstate *ms)
@@ -66,6 +66,15 @@ void			spi_2byte_write(unsigned char r, unsigned char d)
 	}
 }
 
+void			spi_blank_write()
+{
+	for (int i = 0; i < 16; ++i) {
+		digitalWrite(CLOCK, LOW);
+		digitalWrite(DATA, 0);
+		digitalWrite(CLOCK, HIGH);
+	}
+}
+
 void			spi_2byte_print(unsigned char r, unsigned char d)
 {
 	digitalWrite(LOAD, LOW);
@@ -93,8 +102,13 @@ void			my_setup()
 	pinMode(CLOCK, OUTPUT);
 	pinMode(LOAD, OUTPUT);
 	spi_2byte_print(DECODE_MODE, 0x00);
+	//	don't use Decode-Mode
 	spi_2byte_print(INTENSITY, 0x08);
+	//	use 0x08 Intensity level (0x00 to 0x0F)
 	spi_2byte_print(SCAN_LIMIT, 0x07);
+	//	use full Scan-Limit Display digit (0 to 7)
 	spi_2byte_print(SHUTDOWN, 0x01);
+	//	Normal Operation
 	spi_2byte_print(DISPLAY_TEST, 0x00);
+	//	Normal Operation
 }
