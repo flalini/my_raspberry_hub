@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:20:07 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/02 14:38:12 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/05 01:45:36 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void			spi_layer_print(int size, unsigned char layer, unsigned char *d)
 
 void			spi_matrix_print(t_matrixstate *ms)
 {
+	if (!ms)
+		return ;
 	for (int i = 0; i < 8; ++i)
 		spi_layer_print(ms->matrix_num, i + 1, ms->state[i]);
 }
