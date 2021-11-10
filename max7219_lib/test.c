@@ -6,11 +6,11 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 01:14:01 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/03 19:45:00 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/10 19:30:43 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dotmatrix.h"
+#include "includes/dotmatrix.h"
 #include <errno.h>
 
 int		main(void)
