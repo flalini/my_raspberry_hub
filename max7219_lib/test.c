@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 01:14:01 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/13 17:20:48 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/13 17:33:04 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void			my_setup()
 	pinMode(DATA, OUTPUT);
 	pinMode(CLOCK, OUTPUT);
 	pinMode(LOAD, OUTPUT);
-	spi_layer_print(MATRIX_NUM, DECODE_MODE, 0x00);
+	spi_matrix_setting(MATRIX_NUM, DECODE_MODE, 0x00);
 	//	don't use Decode-Mode
-	spi_layer_print(MATRIX_NUM, INTENSITY, 0x08);
+	spi_matrix_setting(MATRIX_NUM, INTENSITY, 0x08);
 	//	use 0x08 Intensity level (0x00 to 0x0F)
-	spi_layer_print(MATRIX_NUM, SCAN_LIMIT, 0x07);
+	spi_matrix_setting(MATRIX_NUM, SCAN_LIMIT, 0x07);
 	//	use full Scan-Limit Display digit (0 to 7)
-	spi_layer_print(MATRIX_NUM, SHUTDOWN, 0x01);
+	spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x01);
 	//	Normal Operation
-	spi_layer_print(MATRIX_NUM, DISPLAY_TEST, 0x00);
+	spi_matrix_setting(MATRIX_NUM, DISPLAY_TEST, 0x00);
 	//	Normal Operation
 }
 
@@ -42,7 +42,7 @@ int		main(void)
 	my_setup();
 	ms = ms_alloc(MATRIX_NUM);
 	if (!ms) {
-		spi_layer_print(MATRIX_NUM, SHUTDOWN, 0x00);
+		spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);
 		if (errno)
 			perror("");
 		exit(errno);
@@ -73,7 +73,7 @@ int		main(void)
 			delay(200);
 		}
 	delay(2000);
-	spi_layer_print(MATRIX_NUM, SHUTDOWN, 0x00);
+	spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);
 	ms_free(ms);
 	return 0;
 }

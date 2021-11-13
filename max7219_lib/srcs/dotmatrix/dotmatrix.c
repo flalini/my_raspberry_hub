@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:20:07 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/13 17:13:37 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/13 17:31:34 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,14 @@ void			spi_2byte_print(unsigned char r, unsigned char d)
 {
 	digitalWrite(LOAD, LOW);
 	spi_2byte_write(r, d);
+	digitalWrite(LOAD, HIGH);
+}
+
+void			spi_matrix_setting(int size, unsigned char code, unsigned char d)
+{
+	digitalWrite(LOAD, LOW);
+	for (int i = 0; i < size; ++i)
+		spi_2byte_write(code, d);
 	digitalWrite(LOAD, HIGH);
 }
 
