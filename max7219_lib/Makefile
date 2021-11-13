@@ -6,7 +6,7 @@
 #    By: ijang <flan101544@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 19:11:25 by ijang             #+#    #+#              #
-#    Updated: 2021/11/13 17:23:45 by ijang            ###   ########.fr        #
+#    Updated: 2021/11/13 17:55:43 by ijang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,11 @@ run: $(RUNOBJ)
 	$(CC) $(CFLAGS) -o run.out $(RUNOBJ)
 
 clean:
-	rm $(RUNOBJ)
+	rm -f $(RUNOBJ)
 
 fclean: clean
-	rm $(NAME)
-	rm run.out
+	rm -f $(NAME)
+	rm -f run.out
 
 re: fclean all
 
