@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 23:20:07 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/05 01:45:36 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/13 17:13:37 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,21 +96,4 @@ void			spi_matrix_print(t_matrixstate *ms)
 		return ;
 	for (int i = 0; i < 8; ++i)
 		spi_layer_print(ms->matrix_num, i + 1, ms->state[i]);
-}
-
-void			my_setup()
-{
-	pinMode(DATA, OUTPUT);
-	pinMode(CLOCK, OUTPUT);
-	pinMode(LOAD, OUTPUT);
-	spi_2byte_print(DECODE_MODE, 0x00);
-	//	don't use Decode-Mode
-	spi_2byte_print(INTENSITY, 0x08);
-	//	use 0x08 Intensity level (0x00 to 0x0F)
-	spi_2byte_print(SCAN_LIMIT, 0x07);
-	//	use full Scan-Limit Display digit (0 to 7)
-	spi_2byte_print(SHUTDOWN, 0x01);
-	//	Normal Operation
-	spi_2byte_print(DISPLAY_TEST, 0x00);
-	//	Normal Operation
 }

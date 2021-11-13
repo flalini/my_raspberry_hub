@@ -6,7 +6,7 @@
 #    By: ijang <flan101544@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 19:11:25 by ijang             #+#    #+#              #
-#    Updated: 2021/11/13 12:50:18 by ijang            ###   ########.fr        #
+#    Updated: 2021/11/13 17:23:45 by ijang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ UTILS =		util
 SRC =		$(addsuffix .c, $(addprefix srcs/dotmatrix/, $(DOTMATRIX))) \
 			$(addsuffix .c, $(addprefix srcs/utils/, $(UTILS)))
 
-RUNSRC =	SRC test2.c
+RUNSRC =	$(SRC) test2.c
 
 OBJ = $(SRC:c=o)
 RUNOBJ = $(RUNSRC:c=o)
@@ -40,14 +40,15 @@ $(NAME): $(OBJ)
 	ranlib $@
 
 run: $(RUNOBJ)
-	$(CC) $(CFLAGS) -c $< -o run.out
+	$(CC) $(CFLAGS) -o run.out $(RUNOBJ)
 
 clean:
-	rm $(OBJ)
+	rm $(RUNOBJ)
 
 fclean: clean
 	rm $(NAME)
+	rm run.out
 
 re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: clean fclean re run

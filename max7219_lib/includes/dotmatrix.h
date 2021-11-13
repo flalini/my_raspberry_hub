@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 21:07:57 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/05 01:37:48 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/13 17:14:11 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ void			spi_blank_write();
 void			spi_2byte_print(unsigned char r, unsigned char d);
 void			spi_layer_print(int size, unsigned char layer, unsigned char *d);
 void			spi_matrix_print(t_matrixstate *ms);
-void			my_setup();
 
 #endif
