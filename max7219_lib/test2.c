@@ -6,11 +6,11 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:28:23 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/10 21:45:09 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/13 12:47:53 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/dotmatrix_add.h"
+#include "dotmatrix_add.h"
 #include <errno.h>
 
 void	ms_init(t_ms_add *ms)
