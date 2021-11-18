@@ -51,8 +51,10 @@ unsigned int	dht11_read_val()
 // verify cheksum and print the verified data
 	if (val[4] != ((val[0] + val[1] + val[2] + val[3]) & 0xFF))
 		return -1;
-	else
+	else {
+		printf("test\n");
 		return *(unsigned int *)(&val);
+	}
 }
 
 int main(void)
@@ -75,7 +77,7 @@ int main(void)
 			fahrenheit = valc[2] * 9.0 / 5.0 + 32.0;
 			printf("Humidity = %hhx.%hhx %% Temperature = %hhx.%hhx *C (%.1f *F)\n", valc[0], valc[1], valc[2], valc[3], fahrenheit);
 		}
-		delay(3000);
+		delay(1000);
 	}
 	return 0;
 }
