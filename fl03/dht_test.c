@@ -7,7 +7,7 @@
 
 unsigned char	count_dht11_bit()
 {
-	unsigned char	counter = 0;
+	unsigned int	counter = 0;
 
 	while (digitalRead(DHT11) == LOW) {
 		delayMicroseconds(1);
@@ -20,12 +20,16 @@ unsigned char	count_dht11_bit()
 	counter = 0;
 	while (digitalRead(DHT11) == HIGH) {
 		delayMicroseconds(1);
-		if (++counter == 255) {
-			printf("fail high\n");
+		if (++counter == 0xFFFFFFFF) {
+			printf("fail high%u\n", counter);
 			return 255;
 		}
 	}
 
+	if (counter >= 255) {
+		printf("fail high%u\n", counter);
+		return 255;
+	}
 	return counter;
 }
 
