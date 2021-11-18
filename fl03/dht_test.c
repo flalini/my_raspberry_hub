@@ -55,8 +55,8 @@ unsigned int	dht11_read_val()
 	if (val[4] != ((val[0] + val[1] + val[2] + val[3]) & 0xFF))
 		return -1;
 	i = -1;
-	while (i < 40)
-		printf("[%hhu]", temp[i]);
+	while (++i < 40)
+		printf("[%hhu]\n", temp[i]);
 	printf("\n");
 	return *(unsigned int *)(&val);
 }
