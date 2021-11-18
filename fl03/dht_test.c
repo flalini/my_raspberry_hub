@@ -15,6 +15,7 @@ unsigned char	count_dht11_bit()
 			return 255;
 	}
 
+	counter = 0;
 	while (digitalRead(DHT11) == HIGH) {
 		delayMicroseconds(1);
 		if (++counter == 255)
@@ -41,8 +42,10 @@ unsigned int	dht11_read_val()
 
 	while (++i < MAX_TIME) {
 		counter = count_dht11_bit();
-		if (counter == 255)
-				return -1;
+		if (counter == 255) {
+			printf("fail at %d\n[%hhx][%hhx][%hhx][%hhx][%hhx]", i, val[1], val[2], val[3], val[4], val[5]);
+			return -1;
+		}
 		val[i / 8] <<= 1;
 		if (counter > 30)
 			val[i / 8] |= 1;
