@@ -36,6 +36,7 @@ unsigned int	dht11_read_val()
 	unsigned char	i = -1;
 
 	pinMode(DHT11, OUTPUT);
+	digitalWrite(DHT11, HIGH);
 	digitalWrite(DHT11, LOW);
 	delay(18);
 	digitalWrite(DHT11, HIGH);
