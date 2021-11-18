@@ -57,9 +57,9 @@ unsigned int	dht11_read_val()
 
 int main(void)
 {
-	unsigned int	vali
-	unsigned char	*valc
-	float			fraenheit;
+	unsigned int	vali;
+	unsigned char	*valc;
+	float			fahrenheit;
 
 	if (wiringPiSetup() == -1)
 		exit(1);
@@ -72,8 +72,8 @@ int main(void)
 		if (vali == -1)
 			printf("Invalid Data!!\n");
 		else {
-			farenheit = valc[2] * 9.0 / 5.0 + 32.0;
-			printf("Humidity = %d.%d %% Temperature = %d.%d *C (%.1f *F)\n", val[0], val[1], val[2], val[3], farenheit);
+			fahrenheit = valc[2] * 9.0 / 5.0 + 32.0;
+			printf("Humidity = %hhd.%hhd %% Temperature = %hhd.%hhd *C (%.1f *F)\n", valc[0], valc[1], valc[2], valc[3], fahrenheit);
 		}
 		delay(3000);
 	}
