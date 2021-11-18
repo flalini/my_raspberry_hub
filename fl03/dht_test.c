@@ -56,7 +56,7 @@ unsigned int	dht11_read_val()
 			return -1;
 		}
 		val[i / 8] <<= 1;
-		if (counter > 30)
+		if (counter > 20)
 			val[i / 8] |= 1;
 	}
 
@@ -81,7 +81,7 @@ int main(void)
 	printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
 	valc = (unsigned char *)(&vali);
 
-	for (int i = 0; i < 30; ++i) {
+	for (int i = 0; i < 10; ++i) {
 		vali = dht11_read_val();
 		if (vali == 0xFFFFFFFF)
 			printf("Invalid Data!!\n");
