@@ -21,7 +21,7 @@ unsigned char	count_dht11_bit()
 	while (digitalRead(DHT11) == HIGH) {
 		delayMicroseconds(1);
 		if (++counter == 255) {
-			printf("fail low\n");
+			printf("fail high\n");
 			return 255;
 		}
 	}
