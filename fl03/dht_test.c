@@ -11,15 +11,19 @@ unsigned char	count_dht11_bit()
 
 	while (digitalRead(DHT11) == LOW) {
 		delayMicroseconds(1);
-		if (++counter == 255)
+		if (++counter == 255) {
+			printf("fail low\n");
 			return 255;
+		}
 	}
 
 	counter = 0;
 	while (digitalRead(DHT11) == HIGH) {
 		delayMicroseconds(1);
-		if (++counter == 255)
+		if (++counter == 255) {
+			printf("fail low\n");
 			return 255;
+		}
 	}
 
 	return counter;
@@ -35,7 +39,7 @@ unsigned int	dht11_read_val()
 	digitalWrite(DHT11, LOW);
 	delay(18);
 	digitalWrite(DHT11, HIGH);
-	delayMicroseconds(40);
+	delayMicroseconds(30);
 	pinMode(DHT11, INPUT);
 
 	count_dht11_bit();
