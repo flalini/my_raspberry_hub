@@ -73,7 +73,7 @@ int main(void)
 			printf("Invalid Data!!\n");
 		else {
 			fahrenheit = valc[2] * 9.0 / 5.0 + 32.0;
-			printf("Humidity = %hhd.%hhd %% Temperature = %hhd.%hhd *C (%.1f *F)\n", valc[0], valc[1], valc[2], valc[3], fahrenheit);
+			printf("Humidity = %hhx.%hhx %% Temperature = %hhx.%hhx *C (%.1f *F)\n", valc[0], valc[1], valc[2], valc[3], fahrenheit);
 		}
 		delay(3000);
 	}
