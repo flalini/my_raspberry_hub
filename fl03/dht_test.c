@@ -28,7 +28,6 @@ unsigned char	count_dht11_bit()
 unsigned int	dht11_read_val()
 {
 	unsigned char	val[5] = {0, 0, 0, 0, 0};
-	unsigned char	temp[40];
 	unsigned char	counter;
 	unsigned char	i = -1;
 
@@ -46,7 +45,6 @@ unsigned int	dht11_read_val()
 		counter = count_dht11_bit();
 		if (counter == 255)
 			return -1;
-		temp[i] = counter;
 		val[i / 8] <<= 1;
 		if (counter > 20)
 			val[i / 8] |= 1;
@@ -55,9 +53,6 @@ unsigned int	dht11_read_val()
 	if (val[4] != ((val[0] + val[1] + val[2] + val[3]) & 0xFF))
 		return -1;
 	i = -1;
-	while (++i < 40)
-		printf("[%hhu]\n", temp[i]);
-	printf("\n");
 	return *(unsigned int *)(&val);
 }
 
