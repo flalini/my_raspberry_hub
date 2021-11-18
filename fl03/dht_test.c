@@ -68,7 +68,7 @@ int main(void)
 	printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
 	valc = (unsigned char *)(&vali);
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < 30; ++i) {
 		vali = dht11_read_val();
 		if (vali == 0xFFFFFFFF)
 			printf("Invalid Data!!\n");
