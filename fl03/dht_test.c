@@ -44,7 +44,7 @@ unsigned int	dht11_read_val()
 		if (counter == 255)
 				return -1;
 		val[i / 8] <<= 1;
-		if (counter > 16)
+		if (counter > 30)
 			val[i / 8] |= 1;
 	}
 
@@ -69,7 +69,7 @@ int main(void)
 
 	for (int i = 0; i < 30; ++i) {
 		vali = dht11_read_val();
-		if (vali == (unsigned char)-1)
+		if (vali == 0xFFFFFFFF)
 			printf("Invalid Data!!\n");
 		else {
 			fahrenheit = valc[2] * 9.0 / 5.0 + 32.0;
