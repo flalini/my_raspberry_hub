@@ -7,29 +7,21 @@
 
 unsigned char	count_dht11_bit()
 {
-	unsigned int	counter = 0;
+	unsigned char	counter = 0;
 
 	while (digitalRead(DHT11) == LOW) {
 		delayMicroseconds(1);
-		if (++counter == 255) {
-			printf("fail low\n");
-			return 255;
-		}
+		if (++counter == 0xFF)
+			return 0xFF;
 	}
 
 	counter = 0;
 	while (digitalRead(DHT11) == HIGH) {
 		delayMicroseconds(1);
-		if (++counter == 0xFFFFFFFF) {
-			printf("fail high%u\n", counter);
-			return 255;
-		}
+		if (++counter == 0xFF)
+			return 0xFF;
 	}
 
-	if (counter >= 255) {
-		printf("fail high%u\n", counter);
-		return 255;
-	}
 	return counter;
 }
 
@@ -51,22 +43,17 @@ unsigned int	dht11_read_val()
 
 	while (++i < MAX_TIME) {
 		counter = count_dht11_bit();
-		if (counter == 255) {
-			printf("fail at %d\n[%hhx][%hhx][%hhx][%hhx][%hhx]", i, val[1], val[2], val[3], val[4], val[5]);
+		if (counter == 255)
 			return -1;
-		}
 		val[i / 8] <<= 1;
 		if (counter > 20)
 			val[i / 8] |= 1;
 	}
 
-// verify cheksum and print the verified data
 	if (val[4] != ((val[0] + val[1] + val[2] + val[3]) & 0xFF))
 		return -1;
-	else {
-		printf("test\n");
+	else
 		return *(unsigned int *)(&val);
-	}
 }
 
 int main(void)
