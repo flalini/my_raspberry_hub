@@ -1,13 +1,15 @@
 #include <wiringPi.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #define MAX_TIME	40
+#define DHT11_SEP	20
 #define DHT11		7
 
-unsigned char	count_dht11_bit()
+uint8_t		count_dht11_bit(void)
 {
-	unsigned char	counter = 0;
+	uint8_t	counter = 0;
 
 	while (digitalRead(DHT11) == LOW) {
 		delayMicroseconds(1);
@@ -25,11 +27,11 @@ unsigned char	count_dht11_bit()
 	return counter;
 }
 
-unsigned int	dht11_read_val()
+uint32_t	dht11_read_val(void)
 {
-	unsigned char	val[5] = {0, 0, 0, 0, 0};
-	unsigned char	counter;
-	unsigned char	i = -1;
+	uint8_t	val[5] = {0, 0, 0, 0, 0};
+	uint8_t	counter;
+	uint8_t	i = -1;
 
 	pinMode(DHT11, OUTPUT);
 	digitalWrite(DHT11, HIGH);
@@ -43,30 +45,29 @@ unsigned int	dht11_read_val()
 
 	while (++i < MAX_TIME) {
 		counter = count_dht11_bit();
-		if (counter == 255)
+		if (counter == 0xFF)
 			return -1;
 		val[i / 8] <<= 1;
-		if (counter > 20)
+		if (counter > DHT11_SEP)
 			val[i / 8] |= 1;
 	}
 
 	if (val[4] != ((val[0] + val[1] + val[2] + val[3]) & 0xFF))
 		return -1;
-	i = -1;
-	return *(unsigned int *)(&val);
+	return *(uint32_t *)(&val);
 }
 
-int main(void)
+int			main(void)
 {
-	unsigned int	vali;
-	unsigned char	*valc;
-	float			fahrenheit;
+	uint32_t	vali;
+	uint8_t		*valc;
+	float		fahrenheit;
 
 	if (wiringPiSetup() == -1)
 		exit(1);
 
 	printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
-	valc = (unsigned char *)(&vali);
+	valc = (uint8_t *)(&vali);
 
 	for (int i = 0; i < 30; ++i) {
 		vali = dht11_read_val();
