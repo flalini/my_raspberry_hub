@@ -6,19 +6,16 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 21:07:57 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/13 17:30:45 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/24 13:04:19 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOTMATRIX_H
 # define DOTMATRIX_H
 
+# include "pin.h"
 # include "util.h"
 # include <wiringPi.h>
-
-# define DATA			12
-# define CLOCK			14
-# define LOAD			10
 
 # define DECODE_MODE	0x09
 # define INTENSITY		0x0A

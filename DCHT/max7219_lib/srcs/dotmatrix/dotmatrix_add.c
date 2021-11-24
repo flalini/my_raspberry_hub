@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 01:38:31 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/13 12:37:47 by ijang            ###   ########.fr       */
+/*   Updated: 2021/11/24 13:07:10 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	spi_layer_change(int size, unsigned char layer, unsigned char *d, unsigned char c)
 {
-	digitalWrite(LOAD, LOW);
+	digitalWrite(LOAD_PIN, LOW);
 	while (size--) {
 		if (c & 1u << size)
 			spi_2byte_write(layer, *d);
@@ -22,7 +22,7 @@ void	spi_layer_change(int size, unsigned char layer, unsigned char *d, unsigned 
 			spi_blank_write();
 		++d;
 	}
-	digitalWrite(LOAD, HIGH);
+	digitalWrite(LOAD_PIN, HIGH);
 }
 
 void	spi_matrix_change(t_ms_add *ms_add)
