@@ -54,7 +54,7 @@ uint32_t	dht11_read_val(void)
 
 	if (val[4] != ((val[0] + val[1] + val[2] + val[3]) & 0xFF))
 		return -1;
-	return *(uint32_t *)(&val);
+	return *(uint32_t *)val;
 }
 
 int			main(void)
