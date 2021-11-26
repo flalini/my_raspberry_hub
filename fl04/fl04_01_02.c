@@ -12,6 +12,8 @@
 
 #include <wiringPi.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 #define CDS		0
 #define LED		1
 #define PWM		LED
@@ -20,12 +22,12 @@ const int pwmValue = 75;
 
 int cdsControl()
 {
-	int i;
-	for (i = 0; i < 10000000; i++) {
+	for (int i = 0; i < 10000000; i++) {
 		if (digitalRead(CDS) == HIGH)
 			pwmWrite(PWM, pwmValue);
 		else
 			pwmWrite(PWM, 1024 - pwmValue);
+		delay(10);
 	}
 	return 0;
 }

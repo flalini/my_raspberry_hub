@@ -12,18 +12,21 @@
 
 #include <wiringPi.h>
 #include <stdio.h>
+#include <stdlib.h>
 #define CDS 0
 #define LED 1
 
 int cdsControl()
 {
 	int i;
-	for (i = 0; i < 10000000; i++)
+	for (i = 0; i < 10000000; i++) {
 		if (digitalRead(CDS) == HIGH) {	/* 빛이감지되면(HIGH) */
 			digitalWrite(LED, HIGH);	/* LED On */
 			delay(1000);
 			digitalWrite(LED, LOW);		/* LED Off */
 		}
+		delay(10);
+	}
 	return 0;
 }
 
