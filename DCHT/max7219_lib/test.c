@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 01:14:01 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/13 17:33:04 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/01 23:18:54 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 void			my_setup()
 {
-	pinMode(DATA, OUTPUT);
-	pinMode(CLOCK, OUTPUT);
-	pinMode(LOAD, OUTPUT);
+	pinMode(DATA_PIN, OUTPUT);
+	pinMode(CLOCK_PIN, OUTPUT);
+	pinMode(LOAD_PIN, OUTPUT);
 	spi_matrix_setting(MATRIX_NUM, DECODE_MODE, 0x00);
 	//	don't use Decode-Mode
 	spi_matrix_setting(MATRIX_NUM, INTENSITY, 0x08);
