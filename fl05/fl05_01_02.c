@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:56:58 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/03 13:37:56 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/03 14:06:19 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	getCM(int *distance)
 {
 	long	time;
 
+	*distance = 0;
 	while (1) {
 		//Send Trigger Pulse
 
@@ -45,7 +46,10 @@ void	getCM(int *distance)
 		time = micros() - time;
 
 		//Get distance in cm
-		*distance = time / 580;
+		if (*distance != (int)(time / 58)) {
+			*distance = (int)(time / 58);
+			fprintf(stderr, "Distance: %d cm\n", *distance);
+		}
 	}
 }
 
