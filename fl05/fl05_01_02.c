@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:56:58 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/03 13:35:05 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/03 13:37:56 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	setup(int *distance, pthread_t *dist_thread)
 		fprintf(stderr, "pthread_create failed.\n");
 		exit(0);
 	}
-	pthread_detach(*dist_thread)
+	pthread_detach(*dist_thread);
 
 	delay(30);
 }
