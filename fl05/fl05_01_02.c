@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:56:58 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/03 13:00:46 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/03 13:35:05 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <pthread.h>
 #include <wiringPi.h>
 
-#define TRUE 1
 #define TRIG 4
 #define ECHO 5
 #define BUZZ 1
@@ -50,7 +49,7 @@ void	getCM(int *distance)
 	}
 }
 
-void	setup(int *distancem, pthread_t *dist_thread)
+void	setup(int *distance, pthread_t *dist_thread)
 {
 	if (wiringPiSetup() == -1) {
 		fprintf(stderr, "Wpi setup failed.\n");
