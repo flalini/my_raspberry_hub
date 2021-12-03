@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:56:58 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/03 14:06:19 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/03 14:18:45 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	getCM(int *distance)
 			*distance = (int)(time / 58);
 			fprintf(stderr, "Distance: %d cm\n", *distance);
 		}
+		delay(50);
 	}
 }
 
