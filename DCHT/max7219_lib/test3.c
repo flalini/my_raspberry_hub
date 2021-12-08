@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:00:26 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:04:01 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ void			my_setup()
 
 void	data_init(unsigned char d[8][4])
 {
-	for (int i = 0; i < 8; i++)
-		for (int j = 0; j < 4; j++)
-		{
-			d[i][j] = 0;
-		}
 }
 
 void	ms_init(t_ms_add *ms)
@@ -51,7 +46,11 @@ void	ms_init(t_ms_add *ms)
 		exit(errno);
 	}
 	unsigned char	tmp_data[8][4]; 
-	data_init(tmp_data);
+	for (int i = 0; i < 8; i++)
+		for (int j = 0; j < 4; j++)
+		{
+			tmp_data[i][j] = 0;
+		}
 	matrix_change(ms, (unsigned char **)tmp_data);
 	spi_matrix_change(ms);
 }
@@ -61,7 +60,6 @@ int		main(void)
 	t_ms_add		ms;
 	unsigned char	d[8][4];
 	
-	data_init(d);
 	errno = 0;
 	if (wiringPiSetup() < 0)
 		exit(-1);
@@ -69,6 +67,11 @@ int		main(void)
 	printf("test1\n");
 	ms_init(&ms);
 	printf("test2\n");
+	for (int i = 0; i < 8; i++)
+		for (int j = 0; j < 4; j++)
+		{
+			d[i][j] = 0;
+		}
 	delay(2000);
 
 	//unsigned char [8][4] 배열에 원하는 데이터 담아서
