@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:11:08 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:12:32 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ms_init(t_ms_add *ms)
 		exit(errno);
 	}
 	unsigned char	tmp_data[8][4]; 
+	printf("[%p]\n", tmp_data);
 	for (int i = 0; i < 8; i++)
 	{
 		printf("i[%p]", tmp_data[i]);
