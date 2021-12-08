@@ -6,7 +6,7 @@
 #    By: ijang <flan101544@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 19:11:25 by ijang             #+#    #+#              #
-#    Updated: 2021/12/08 22:15:35 by ijang            ###   ########.fr        #
+#    Updated: 2021/12/09 00:07:33 by ijang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =		libmax7219.a
 
 CC =		gcc
 
-CFLAGS =	-Wall -Wextra -Werror -I includes/ -lwiringPi
+CFLAGS =	-I includes/ -lwiringPi
 
 AR =		ar rc
 

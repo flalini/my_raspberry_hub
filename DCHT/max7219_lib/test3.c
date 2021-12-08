@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:04:58 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:07:19 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ms_init(t_ms_add *ms)
 		{
 			tmp_data[i][j] = 0;
 		}
-	matrix_change(ms, (unsigned char **)tmp_data);
+	matrix_change(ms, tmp_data);
 	spi_matrix_change(ms);
 }
 
@@ -84,7 +84,7 @@ int		main(void)
 	d[6][0] = 0b11101110;
 	d[7][0] = 0b00000000;
 	printf("test3\n");
-	matrix_change(&ms, (unsigned char **)d);
+	matrix_change(&ms, d);
 	printf("test4\n");
 	spi_matrix_change(&ms);
 	printf("test5\n");
