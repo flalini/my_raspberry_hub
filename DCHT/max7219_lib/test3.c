@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:04:01 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:04:58 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ void			my_setup()
 	//	Normal Operation
 	spi_matrix_setting(MATRIX_NUM, DISPLAY_TEST, 0x00);
 	//	Normal Operation
-}
-
-void	data_init(unsigned char d[8][4])
-{
 }
 
 void	ms_init(t_ms_add *ms)
