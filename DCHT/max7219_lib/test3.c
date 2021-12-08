@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test2.c                                            :+:      :+:    :+:   */
+/*   test3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 19:28:23 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/08 22:24:21 by ijang            ###   ########.fr       */
+/*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
+/*   Updated: 2021/12/08 22:24:33 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,6 @@ void	ms_init(t_ms_add *ms)
 			perror("");
 		exit(errno);
 	}
-	/*
-	for (int i = 0; i < 8; ++i) {
-		ms->change[i] = 0;
-		for (int j = 0; j < ms->ms->matrix_num; ++j)
-			ms->ms->state[i][j] = 0b00000001;
-	}
-	*/
-
 	unsigned char	tmp_data[8][4] = {0, };
 	matrix_change(ms, tmp_data);
 	spi_matrix_change(ms->ms);
@@ -57,7 +49,7 @@ void	ms_init(t_ms_add *ms)
 int		main(void)
 {
 	t_ms_add		ms;
-	unsigned char	d[8][4];
+	unsigned char	d[8][4] = {0, };
 	
 	errno = 0;
 	if (wiringPiSetup() < 0)
@@ -66,25 +58,22 @@ int		main(void)
 	ms_init(&ms);
 	delay(2000);
 
-	/*
-	for (int i = 1; i < 8; ++i) {
-		for (int j = 0; j < 4; ++j)
-			d[j] = 0b00000001;
-		for (int j = 0; j < i + 3; ++j) {
-			if (j < i)
-				d[0] <<= 1;
-			if (j > 0 && j < i + 1)
-				d[1] <<= 1;
-			if (j > 1 && j < i + 2)
-				d[2] <<= 1;
-			if (j > 2 && j < i + 3)
-				d[3] <<= 1;
-			layer_change(&ms, i, d);
-			spi_matrix_change(&ms);
-			delay(200);
-		}
-	}
-	*/
+	//unsigned char [8][4] 배열에 원하는 데이터 담아서
+	//matrix_change(&ms, 데이터);
+	//spi_matrix_change(&ms);
+	//한번 해보세요.
+
+	d[0][0] = 0b00000000;
+	d[1][0] = 0b00000000;
+	d[2][0] = 0b11100100;
+	d[3][0] = 0b10101100;
+	d[4][0] = 0b10100100;
+	d[5][0] = 0b10100100;
+	d[6][0] = 0b10100100;
+	d[7][0] = 0b11101110;
+	d[8][0] = 0b00000000;
+	matrix_change(&ms, d);
+	spi_matrix_change(&ms);
 
 	delay(2000);
 	spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);

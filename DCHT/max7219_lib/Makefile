@@ -6,7 +6,7 @@
 #    By: ijang <flan101544@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 19:11:25 by ijang             #+#    #+#              #
-#    Updated: 2021/11/13 17:55:43 by ijang            ###   ########.fr        #
+#    Updated: 2021/12/08 22:15:35 by ijang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,11 @@ SRC =		$(addsuffix .c, $(addprefix srcs/dotmatrix/, $(DOTMATRIX))) \
 			$(addsuffix .c, $(addprefix srcs/utils/, $(UTILS)))
 
 RUNSRC =	$(SRC) test2.c
+TESTSRC =	$(SRC) test3.c
 
 OBJ = $(SRC:c=o)
 RUNOBJ = $(RUNSRC:c=o)
+TESTOBJ = $(TESTSRC:c=o)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -42,12 +44,16 @@ $(NAME): $(OBJ)
 run: $(RUNOBJ)
 	$(CC) $(CFLAGS) -o run.out $(RUNOBJ)
 
+test: $(TESTOBJ)
+	$(CC) $(CFLAGS) -o test.out $(TESTOBJ)
+
 clean:
 	rm -f $(RUNOBJ)
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f run.out
+	rm -f test.out
 
 re: fclean all
 
