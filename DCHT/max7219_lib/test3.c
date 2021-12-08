@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/08 23:22:34 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:00:26 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ void			my_setup()
 	//	Normal Operation
 }
 
+void	data_init(unsigned char d[8][4])
+{
+	for (int i = 0; i < 8; i++)
+		for (int j = 0; j < 4; j++)
+		{
+			d[i][j] = 0;
+		}
+}
+
 void	ms_init(t_ms_add *ms)
 {
 	ms->ms = ms_alloc(4);
@@ -41,7 +50,8 @@ void	ms_init(t_ms_add *ms)
 			perror("");
 		exit(errno);
 	}
-	unsigned char	tmp_data[8][4] = {0, };
+	unsigned char	tmp_data[8][4]; 
+	data_init(tmp_data);
 	matrix_change(ms, (unsigned char **)tmp_data);
 	spi_matrix_change(ms);
 }
@@ -49,8 +59,9 @@ void	ms_init(t_ms_add *ms)
 int		main(void)
 {
 	t_ms_add		ms;
-	unsigned char	d[8][4] = {0, };
+	unsigned char	d[8][4];
 	
+	data_init(d);
 	errno = 0;
 	if (wiringPiSetup() < 0)
 		exit(-1);
