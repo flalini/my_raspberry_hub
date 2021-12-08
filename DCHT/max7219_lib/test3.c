@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:31:21 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:40:10 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ void	ms_init(t_ms_add *ms)
 	}
 	matrix_change(ms, tmp_data);
 	spi_matrix_change(ms);
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			printf("[%hhx]", ms->ms->state[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 int		main(void)
@@ -93,8 +101,24 @@ int		main(void)
 	printf("test3\n");
 	matrix_change(&ms, d);
 	printf("test4\n");
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			printf("[%hhx]", ms.ms->state[i][j]);
+		}
+		printf("\n");
+	}
 	spi_matrix_change(&ms);
 	printf("test5\n");
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			printf("[%hhx]", ms.ms->state[i][j]);
+		}
+		printf("\n");
+	}
 
 	delay(20000);
 	spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);

@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 01:38:31 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:23:42 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:34:54 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	spi_layer_change(int size, unsigned char layer, unsigned char *d, unsigned char c)
 {
+	printf("layer[%d]print\n", layer);
 	digitalWrite(LOAD_PIN, LOW);
 	while (size--) {
 		if (c & 1u << size)
