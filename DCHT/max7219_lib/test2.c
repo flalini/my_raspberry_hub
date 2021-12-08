@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:28:23 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/08 22:35:10 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/08 23:40:11 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,19 @@ void	ms_init(t_ms_add *ms)
 			perror("");
 		exit(errno);
 	}
-	/*
 	for (int i = 0; i < 8; ++i) {
 		ms->change[i] = 0;
 		for (int j = 0; j < ms->ms->matrix_num; ++j)
 			ms->ms->state[i][j] = 0b00000001;
 	}
-	*/
 
-	unsigned char	tmp_data[8][4] = {0, };
-	matrix_change(ms, tmp_data);
-	spi_matrix_change(ms);
+	spi_matrix_print(ms->ms);
 }
 
 int		main(void)
 {
 	t_ms_add		ms;
-	unsigned char	d[8][4];
+	unsigned char	d[4];
 	
 	errno = 0;
 	if (wiringPiSetup() < 0)
@@ -66,7 +62,6 @@ int		main(void)
 	ms_init(&ms);
 	delay(2000);
 
-	/*
 	for (int i = 1; i < 8; ++i) {
 		for (int j = 0; j < 4; ++j)
 			d[j] = 0b00000001;
@@ -84,7 +79,6 @@ int		main(void)
 			delay(200);
 		}
 	}
-	*/
 
 	delay(2000);
 	spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);
