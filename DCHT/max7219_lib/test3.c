@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/08 23:02:15 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/08 23:22:34 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ int		main(void)
 	if (wiringPiSetup() < 0)
 		exit(-1);
 	my_setup();
+	printf("test1\n");
 	ms_init(&ms);
+	printf("test2\n");
 	delay(2000);
 
 	//unsigned char [8][4] 배열에 원하는 데이터 담아서
@@ -71,8 +73,11 @@ int		main(void)
 	d[5][0] = 0b10100100;
 	d[6][0] = 0b11101110;
 	d[7][0] = 0b00000000;
+	printf("test3\n");
 	matrix_change(&ms, (unsigned char **)d);
+	printf("test4\n");
 	spi_matrix_change(&ms);
+	printf("test5\n");
 
 	delay(2000);
 	spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);
