@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 01:38:31 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:14:01 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:17:50 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ void	layer_change(t_ms_add *ms_add, unsigned char layer, unsigned char *d)
 
 	for (int i = 0; i < ms->matrix_num; ++i) {
 		flag <<= 1;
-		printf("num[%d]\n", i);
 		if (ms->state[layer][i] != d[i]) {
-			printf("change\n");
 			ms->state[layer][i] = d[i];
 			flag += 1;
 		}

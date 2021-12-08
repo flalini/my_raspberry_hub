@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:12:32 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:17:45 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	ms_init(t_ms_add *ms)
 		printf("i[%p]", tmp_data[i]);
 		for (int j = 0; j < 4; j++)
 		{
+			printf("[%hhu]", tmp_data[i][j]);
 			tmp_data[i][j] = 0;
 		}
+		printf("\n");
 	}
 	matrix_change(ms, tmp_data);
 	spi_matrix_change(ms);
