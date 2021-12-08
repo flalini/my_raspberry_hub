@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 01:38:31 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:19:51 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:23:42 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ void	layer_change(t_ms_add *ms_add, unsigned char layer, unsigned char *d)
 
 	for (int i = 0; i < ms->matrix_num; ++i) {
 		flag <<= 1;
-		if (ms->state[layer][i] != d[i]) {
-			ms->state[layer][i] = d[i];
+		if (ms->state[layer][i] != *(d + i)) {
+			printf("[%d][%d][%hhx][%hhx]\n", layer, i, d[i], *(d + i));
+			ms->state[layer][i] = *(d + i);
 			flag += 1;
 		}
 	}
@@ -57,12 +58,12 @@ void	layer_change(t_ms_add *ms_add, unsigned char layer, unsigned char *d)
 
 void	matrix_change(t_ms_add *ms_add, unsigned char **d)
 {
-	printf("m[%p]\n", d);
+//	printf("m[%p]\n", d);
 	if (!ms_add || !d)
 		return ;
 
 	for (int i = 0; i < 8; ++i) {
-		printf("layer[%d][%p][%p]\n", i, d[i], (d + i));
+//		printf("layer[%d][%p][%p]\n", i, d[i], (d + i));
 		layer_change(ms_add, i, d + i);
 	}
 }
