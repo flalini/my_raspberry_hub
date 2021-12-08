@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 01:38:31 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:34:54 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:46:22 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	spi_layer_change(int size, unsigned char layer, unsigned char *d, unsigned char c)
 {
-	printf("layer[%d]print\n", layer);
 	digitalWrite(LOAD_PIN, LOW);
 	while (size--) {
 		if (c & 1u << size)
@@ -49,7 +48,6 @@ void	layer_change(t_ms_add *ms_add, unsigned char layer, unsigned char *d)
 	for (int i = 0; i < ms->matrix_num; ++i) {
 		flag <<= 1;
 		if (ms->state[layer][i] != *(d + i)) {
-			printf("[%d][%d][%hhx][%hhx]\n", layer, i, d[i], *(d + i));
 			ms->state[layer][i] = *(d + i);
 			flag += 1;
 		}
@@ -59,12 +57,10 @@ void	layer_change(t_ms_add *ms_add, unsigned char layer, unsigned char *d)
 
 void	matrix_change(t_ms_add *ms_add, unsigned char **d)
 {
-//	printf("m[%p]\n", d);
 	if (!ms_add || !d)
 		return ;
 
 	for (int i = 0; i < 8; ++i) {
-//		printf("layer[%d][%p][%p]\n", i, d[i], (d + i));
 		layer_change(ms_add, i, d + i);
 	}
 }

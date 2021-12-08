@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:44:52 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 01:26:17 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,16 @@ void	ms_init(t_ms_add *ms)
 		exit(errno);
 	}
 	unsigned char	tmp_data[8][4]; 
-	printf("[%p]\n", tmp_data);
 	for (int i = 0; i < 8; i++)
 	{
-		printf("i[%p]", tmp_data[i]);
 		for (int j = 0; j < 4; j++)
 		{
-			printf("[%hhu]", tmp_data[i][j]);
 			tmp_data[i][j] = 0u;
-			printf("[%hhu]", tmp_data[i][j]);
 		}
-		printf("\n");
 	}
 	matrix_change(ms, tmp_data);
 	spi_matrix_change(ms);
 	spi_matrix_print(ms->ms);
-	for (int i = 0; i < 8; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			printf("[%hhx]", ms->ms->state[i][j]);
-		}
-		printf("flag[%hhx]\n", ms->change[i]);
-	}
 }
 
 int		main(void)
@@ -76,9 +63,7 @@ int		main(void)
 	if (wiringPiSetup() < 0)
 		exit(-1);
 	my_setup();
-	printf("test1\n");
 	ms_init(&ms);
-	printf("test2\n");
 	for (int i = 0; i < 8; i++)
 		for (int j = 0; j < 4; j++)
 		{
@@ -99,28 +84,8 @@ int		main(void)
 	d[5][0] = 0b10100100;
 	d[6][0] = 0b11101110;
 	d[7][0] = 0b00000000;
-	printf("test3\n");
 	matrix_change(&ms, d);
-	printf("test4\n");
-	for (int i = 0; i < 8; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			printf("[%hhx]", ms.ms->state[i][j]);
-		}
-		printf("flag[%hhx]\n", ms.change[i]);
-	}
 	spi_matrix_change(&ms);
-	printf("test5\n");
-	for (int i = 0; i < 8; i++)
-	{
-		for (int j = 0; j < 4; j++)
-		{
-			printf("[%hhx]", ms.ms->state[i][j]);
-		}
-		printf("flag[%hhx]\n", ms.change[i]);
-	}
-
 	delay(20000);
 	spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);
 	ms_free(ms.ms);
