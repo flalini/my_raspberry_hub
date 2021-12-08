@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:40:10 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:44:04 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,14 @@ void	ms_init(t_ms_add *ms)
 	}
 	matrix_change(ms, tmp_data);
 	spi_matrix_change(ms);
+	spi_matrix_print(ms);
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
 			printf("[%hhx]", ms->ms->state[i][j]);
 		}
-		printf("\n");
+		printf("flag[%hhx]\n", ms->change[i]);
 	}
 }
 
@@ -107,7 +108,7 @@ int		main(void)
 		{
 			printf("[%hhx]", ms.ms->state[i][j]);
 		}
-		printf("\n");
+		printf("flag[%hhx]\n", ms.change[i]);
 	}
 	spi_matrix_change(&ms);
 	printf("test5\n");
@@ -117,7 +118,7 @@ int		main(void)
 		{
 			printf("[%hhx]", ms.ms->state[i][j]);
 		}
-		printf("\n");
+		printf("flag[%hhx]\n", ms.change[i]);
 	}
 
 	delay(20000);
