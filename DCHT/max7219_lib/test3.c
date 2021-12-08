@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:23:53 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:31:21 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	ms_init(t_ms_add *ms)
 		for (int j = 0; j < 4; j++)
 		{
 			printf("[%hhu]", tmp_data[i][j]);
-			tmp_data[i][j] = 0;
+			tmp_data[i][j] = 0u;
+			printf("[%hhu]", tmp_data[i][j]);
 		}
 		printf("\n");
 	}
