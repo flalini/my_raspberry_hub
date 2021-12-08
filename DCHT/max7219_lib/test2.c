@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 19:28:23 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/08 22:24:21 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/08 22:35:10 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ms_init(t_ms_add *ms)
 
 	unsigned char	tmp_data[8][4] = {0, };
 	matrix_change(ms, tmp_data);
-	spi_matrix_change(ms->ms);
+	spi_matrix_change(ms);
 }
 
 int		main(void)
