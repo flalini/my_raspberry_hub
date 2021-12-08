@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:44:04 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:44:52 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ms_init(t_ms_add *ms)
 	}
 	matrix_change(ms, tmp_data);
 	spi_matrix_change(ms);
-	spi_matrix_print(ms);
+	spi_matrix_print(ms->ms);
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 4; j++)
