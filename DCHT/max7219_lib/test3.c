@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 22:24:02 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/09 00:17:45 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/09 00:23:53 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		main(void)
 	spi_matrix_change(&ms);
 	printf("test5\n");
 
-	delay(2000);
+	delay(20000);
 	spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);
 	ms_free(ms.ms);
 	return 0;
