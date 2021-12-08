@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 01:38:31 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/08 23:54:23 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/08 23:55:57 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	spi_matrix_change(t_ms_add *ms_add)
 
 void	layer_change(t_ms_add *ms_add, unsigned char layer, unsigned char *d)
 {
+	printf("[%p]\n", d);
 	if (!ms_add || !d)
 		return ;
 	t_matrixstate	*ms = ms_add->ms;
