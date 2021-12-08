@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 01:38:31 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/24 13:07:10 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/08 23:24:11 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	matrix_change(t_ms_add *ms_add, unsigned char **d)
 	if (!ms_add || !d)
 		return ;
 
-	for (int i = 0; i < 8; ++i)
+	for (int i = 0; i < 8; ++i) {
+		printf("matrixchange%d\n", i);
 		layer_change(ms_add, i, d[i]);
+	}
 }
