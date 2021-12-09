@@ -11,8 +11,10 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-// wiringPi에서는 GPIO 18번이 1번이다
-#define LED 1
+#define LED1	1
+#define LED2	4
+#define LED3	5
+#define LED4	6
 
 static void *clnt_connection(void *arg);
 int sendData(int fd, FILE *fp, char *file_name);
@@ -105,18 +107,43 @@ void *clnt_connection(void *arg)
 	strcpy(file_name, strtok(NULL, " /"));
 	printf("file_name : %s\n", file_name);
 	if(strstr(file_name, "?") != NULL) {
-		// LED 버튼을 누르고 submit을 했다면 ?led=On 혹은 ?led=Off라고 발송된다
-		char opt[8], var[8];
+		// LED 버튼을 누르고 submit을 했다면 "?x=x&x=x&x=x"같은 식으로 온다
+		char	*opt;
+		char	*var;
+		int		state;
 		strtok(file_name, "?");
-		// led와 On/Off 분리
-		strcpy(opt, strtok(NULL, "="));
-		strcpy(var, strtok(NULL, "="));
-		
-		printf("%s=%s\n", opt, var);
-		if(!strcmp(opt, "led") && !strcmp(var, "On")) {
-			ledControl(LED, 1);
-		} else if(!strcmp(opt, "led") && !strcmp(var, "Off")) {
-			ledControl(LED, 0);   
+		// 이후 led n번과 On/Off 분리하며 작업
+		while ((opt = strtok(NULL, "="))) {
+			var = strtok(NULL, "&");
+
+			printf("%s=%s\n", opt, var);
+
+			if (!strcmp(var, "On"))
+				state = 1;
+			else if (!strcmp(var, "Off"))
+				state = 1;
+			if (strstr(opt, "led") != NULL)
+				switch (opt[3])
+				{
+				case '1':
+					ledControl(LED1, state);
+					break;
+				
+				case '2':
+					ledControl(LED2, state);
+					break;
+				
+				case '3':
+					ledControl(LED3, state);
+					break;
+				
+				case '4':
+					ledControl(LED4, state);
+					break;
+				
+				default:
+					break;
+				}
 		}
 	}
 	
