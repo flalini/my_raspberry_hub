@@ -121,6 +121,7 @@ void *clnt_connection(void *arg)
 			++num;
 			check = strstr(check, "&") + 1;
 		}
+		strtok(file_name, "?");
 		// 이후 led n번과 On/Off 분리하며 작업
 		while (num--) {
 			strcpy(opt, strtok(NULL, "="));
