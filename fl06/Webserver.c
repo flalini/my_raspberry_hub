@@ -108,22 +108,30 @@ void *clnt_connection(void *arg)
 	printf("file_name : %s\n", file_name);
 	if(strstr(file_name, "?") != NULL) {
 		// LED 버튼을 누르고 submit을 했다면 "?x=x&x=x&x=x"같은 식으로 온다
-		char	*opt;
-		char	*var;
-		int		state;
-		opt = strtok(NULL, "?");
-//		strcpy(file_name, strtok(file_name, "?"));
-//		int		len = strlen(file_name);
+		char	*check;
+		char	opt[8];
+		char	var[8];
+		int		state = 0;
+		int		num = 1;
+		strcpy(file_name, strtok(NULL, "?"));
+		check = file_name;
+		printf("file_name[%d] : %s\n", num, check);
+		while (strstr(check, "&") != NULL) {
+			++num;
+			check = strstr(check, "&") + 1;
+			printf("file_name[%d] : %s\n", num, check);
+		}
 		// 이후 led n번과 On/Off 분리하며 작업
-		while ((opt = strstr(opt, "led"))) {
-			printf("%s\n", opt);
-			var = strstr(opt, "O");
+		while (num--) {
+			strcpy(opt, strtok(NULL, "="));
+			strcpy(var, strtok(NULL, "="));
+
+			printf("%s=%s\n", opt, var);
 			if (!strncmp(var, "On", 2))
 				state = 1;
 			else if (!strncmp(var, "Off", 3))
 				state = 0;
-			switch (opt[3])
-			{
+			switch (opt[3]) {
 			case '1':
 				ledControl(LED1, state);
 				break;
@@ -143,8 +151,8 @@ void *clnt_connection(void *arg)
 			default:
 				break;
 			}
-			++opt;
 		}
+
 	}
 	
 	// 웹 페이지
