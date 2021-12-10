@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:22:51 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/11 00:16:31 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 00:25:39 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			my_setup()
 	pinMode(LOAD_PIN, OUTPUT);
 	spi_matrix_setting(MATRIX_NUM, DECODE_MODE, 0x00);
 	//	don't use Decode-Mode
-	spi_matrix_setting(MATRIX_NUM, INTENSITY, 0x08);
+	spi_matrix_setting(MATRIX_NUM, INTENSITY, 0x01);
 	//	use 0x08 Intensity level (0x00 to 0x0F)
 	spi_matrix_setting(MATRIX_NUM, SCAN_LIMIT, 0x07);
 	//	use full Scan-Limit Display digit (0 to 7)
