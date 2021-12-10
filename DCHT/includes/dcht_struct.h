@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pin.h                                              :+:      :+:    :+:   */
+/*   dcht_struct.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 13:01:15 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 16:07:31 by ijang            ###   ########.fr       */
+/*   Created: 2021/12/10 16:11:53 by ijang             #+#    #+#             */
+/*   Updated: 2021/12/10 21:42:41 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIN_H
-# define PIN_H
+#ifndef DCHT_STRUCT_H
+# define DCHT_STRUCT_H
 
-# define DATA_PIN	12
-# define CLOCK_PIN	14
-# define LOAD_PIN	11
+# include "pin.h"
+# include "util.h"
+# include "dotmatrix.h"
+# include "dotmatrix_add.h"
+# include "dht11.h"
+# include <errno.h>
 
-# define DHT11_PIN	7
+typedef struct	s_dcht
+{
+	t_ms_add		*msa;
+	t_dht11			dht11;
+	unsigned char	**tmp;
+	struct tm		tm;
+	unsigned char	sw_flag;
+	pthread_t		pid[2];
+}				t_dcht;
 
-# define SW_PIN		10
-
-# define MAXMATRIX	4
-
-# define MATRIX_NUM	4
+void		init_dcht(t_dcht *dcht);
+void		clear_dcht(t_dcht *dcht);
 
 #endif

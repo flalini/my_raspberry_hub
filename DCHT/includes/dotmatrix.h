@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dotmatrix.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/01 21:07:57 by ijang             #+#    #+#             */
+/*   Updated: 2021/12/10 13:57:54 by ijang            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef DOTMATRIX_H
+# define DOTMATRIX_H
+
+# include "pin.h"
+# include "util.h"
+# include <wiringPi.h>
+
+# define DECODE_MODE	0x09
+# define INTENSITY		0x0A
+# define SCAN_LIMIT		0x0B
+# define SHUTDOWN		0x0C
+# define DISPLAY_TEST	0x0F
+
+typedef struct	s_matrixstate
+{
+	int				matrix_num;
+	unsigned char	**state;
+	//state[layer][matrix_num]
+}				t_matrixstate;
+
+t_matrixstate	*ms_alloc(size_t size);
+void			ms_free(t_matrixstate *ms);
+void			spi_2byte_write(unsigned char r, unsigned char d);
+void			spi_blank_write();
+void			spi_2byte_print(unsigned char r, unsigned char d);
+void			spi_matrix_setting(int size, unsigned char code, unsigned char d);
+void			spi_layer_print(int size, unsigned char layer, unsigned char *d);
+void			spi_matrix_print(t_matrixstate *ms);
+
+#endif

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pin.h                                              :+:      :+:    :+:   */
+/*   switch.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 13:01:15 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 16:07:31 by ijang            ###   ########.fr       */
+/*   Created: 2021/12/10 13:47:52 by ijang             #+#    #+#             */
+/*   Updated: 2021/12/10 18:24:53 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIN_H
-# define PIN_H
+#ifndef SWITCH_H
+# define SWITCH_H
 
-# define DATA_PIN	12
-# define CLOCK_PIN	14
-# define LOAD_PIN	11
+# include "pin.h"
+# include <wiringPi.h>
+# include <pthread.h>
 
-# define DHT11_PIN	7
-
-# define SW_PIN		10
-
-# define MAXMATRIX	4
-
-# define MATRIX_NUM	4
+void		switch_routin(unsigned char *flag);
+int			switch_thread_start(unsigned char *flag, pthread_t *switch_thread);
 
 #endif

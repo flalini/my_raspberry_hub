@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:14:20 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/24 19:25:21 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/10 13:51:30 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,10 @@ typedef struct	s_dht11
 	t_dht11_val	data;
 	uint8_t		change;
 }				t_dht11;
+
+uint8_t		count_dht11_bit(void);
+void		dht11_read_val(t_dht11 *dht11);
+void		dht11_routin(t_dht11 *dht11);
+int			dht11_thread_start(t_dht11 *dht11, pthread_t *dht11_thread);
 
 #endif

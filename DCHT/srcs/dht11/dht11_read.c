@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 11:46:39 by ijang             #+#    #+#             */
-/*   Updated: 2021/11/24 19:25:36 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/10 13:00:24 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ int		dht11_thread_start(t_dht11 *dht11, pthread_t *dht11_thread)
 	dht11_read_val(dht11);
 	if (pthread_create(dht11_thread, NULL, (void *)dht11_routin, dht11))
 		return -1;
-	pthread_detach(*dht11_thread)
+	pthread_detach(*dht11_thread);
 	return 0;
 }

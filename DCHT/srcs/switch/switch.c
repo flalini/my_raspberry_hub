@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pin.h                                              :+:      :+:    :+:   */
+/*   switch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 13:01:15 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 16:07:31 by ijang            ###   ########.fr       */
+/*   Created: 2021/12/10 14:02:49 by ijang             #+#    #+#             */
+/*   Updated: 2021/12/10 14:08:07 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIN_H
-# define PIN_H
+#include "switch.h"
 
-# define DATA_PIN	12
-# define CLOCK_PIN	14
-# define LOAD_PIN	11
+void		switch_routin(unsigned char *flag)
+{
+	while (1) {
+		if (digitalRead(SW_PIN)) {
+			*flag = 1;
+			delay(10);
+		}
+	}
+}
 
-# define DHT11_PIN	7
-
-# define SW_PIN		10
-
-# define MAXMATRIX	4
-
-# define MATRIX_NUM	4
-
-#endif
+int			switch_thread_start(unsigned char *flag, pthread_t *switch_thread)
+{
+	if (pthread_create(switch_thread, NULL, (void *)switch_routin, flag))
+		return -1;
+	pthread_detach(*switch_thread);
+	return 0;
+}

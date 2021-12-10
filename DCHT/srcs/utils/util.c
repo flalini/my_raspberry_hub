@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pin.h                                              :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 13:01:15 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 16:07:31 by ijang            ###   ########.fr       */
+/*   Created: 2021/11/01 23:40:17 by ijang             #+#    #+#             */
+/*   Updated: 2021/11/01 23:52:56 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIN_H
-# define PIN_H
+#include "util.h"
 
-# define DATA_PIN	12
-# define CLOCK_PIN	14
-# define LOAD_PIN	11
+void	*check_malloc(void **p, size_t size)
+{
+	*p = malloc(size);
+	return *p;
+}
 
-# define DHT11_PIN	7
-
-# define SW_PIN		10
-
-# define MAXMATRIX	4
-
-# define MATRIX_NUM	4
-
-#endif
+void	*check_calloc(void **p, size_t count, size_t size)
+{
+	*p = calloc(count, size);
+	return *p;
+}

@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pin.h                                              :+:      :+:    :+:   */
+/*   dcht.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 13:01:15 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 16:07:31 by ijang            ###   ########.fr       */
+/*   Created: 2021/12/10 13:04:09 by ijang             #+#    #+#             */
+/*   Updated: 2021/12/10 21:12:39 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIN_H
-# define PIN_H
+#ifndef DCHT_H
+# define DCHT_H
 
-# define DATA_PIN	12
-# define CLOCK_PIN	14
-# define LOAD_PIN	11
+# include "pin.h"
+# include "util.h"
+# include "dotmatrix.h"
+# include "dotmatrix_add.h"
+# include "dht11.h"
+# include "make_matrix.h"
+# include "dcht_struct.h"
+# include "switch.h"
 
-# define DHT11_PIN	7
-
-# define SW_PIN		10
-
-# define MAXMATRIX	4
-
-# define MATRIX_NUM	4
+void			my_setup();
+void			error_exit(t_dcht *dcht);
+void			display_time(t_dcht *dcht);
+void			display_ht(t_dcht *dcht);
 
 #endif

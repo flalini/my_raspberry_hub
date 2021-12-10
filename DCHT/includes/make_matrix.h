@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pin.h                                              :+:      :+:    :+:   */
+/*   make_matrix.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 13:01:15 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 16:07:31 by ijang            ###   ########.fr       */
+/*   Created: 2021/12/10 13:13:47 by ijang             #+#    #+#             */
+/*   Updated: 2021/12/10 18:35:15 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIN_H
-# define PIN_H
+#ifndef MAKE_MATRIX_H
+# define MAKE_MATRIX_H
 
-# define DATA_PIN	12
-# define CLOCK_PIN	14
-# define LOAD_PIN	11
+# include "util.h"
+# include <time.h>
 
-# define DHT11_PIN	7
+extern unsigned char	g_digit[10][8];
+extern unsigned char	g_symbol[2][8];
 
-# define SW_PIN		10
+int		tmp_data_alloc(unsigned char **p, size_t num);
+void	tmp_data_free(unsigned char **p);
+int		make_clock(unsigned char **tmp, struct tm *tm);
+int		make_ht(unsigned char **tmp, int h, int t);
 
-# define MAXMATRIX	4
-
-# define MATRIX_NUM	4
-
-#endif
+# endif
