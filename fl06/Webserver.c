@@ -116,6 +116,7 @@ void *clnt_connection(void *arg)
 //		int		len = strlen(file_name);
 		// 이후 led n번과 On/Off 분리하며 작업
 		while ((opt = strstr(opt, "led"))) {
+			printf("%s\n", opt);
 			var = strstr(opt, "O");
 			if (!strncmp(var, "On", 2))
 				state = 1;
