@@ -117,16 +117,12 @@ void *clnt_connection(void *arg)
 		int		state = 0;
 		int		num = 1;
 		check = strstr(file_name, "?") + 1;
-		printf("file_name[%d] : %s\n", num, check);
 		while (strstr(check, "&") != NULL) {
 			++num;
 			check = strstr(check, "&") + 1;
-			printf("file_name[%d] : %s\n", num, check);
 		}
-		strtok(file_name, "?");
 		// 이후 led n번과 On/Off 분리하며 작업
 		while (num--) {
-			printf("[%d]", num);
 			strcpy(opt, strtok(NULL, "="));
 			strcpy(var, strtok(NULL, "&"));
 
@@ -135,7 +131,6 @@ void *clnt_connection(void *arg)
 				state = 1;
 			else if (!strncmp(var, "Off", 3))
 				state = 0;
-			printf("opt[%c]\nstate[%d]\n", opt[3], state);
 			switch (opt[3]) {
 			case '1':
 				ledControl(LED1, state);
@@ -157,10 +152,8 @@ void *clnt_connection(void *arg)
 				break;
 			}
 		}
-		printf("test\n");
 	}
 	
-	printf("test\n");
 	// 웹 페이지
 	do {
 		fgets(reg_line, BUFSIZ, clnt_read);
