@@ -6,15 +6,16 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 21:07:51 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 21:10:41 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/10 22:33:04 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dcht_struct.h"
+#include "make_matrix.h"
 
 void	init_dcht(t_dcht *dcht)
 {
-	if (check_malloc(&(dcht->msa), sizeof(t_ms_add))){
+	if (check_malloc((void **)&(dcht->msa), sizeof(t_ms_add))){
 		if (errno)
 			perror("");
 		exit(errno);
