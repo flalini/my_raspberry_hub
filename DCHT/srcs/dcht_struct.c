@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 21:07:51 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 23:25:43 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 00:22:27 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_dcht(t_dcht *dcht)
 			perror("");
 		exit(errno);
 	}
-	if (!tmp_data_alloc(dcht->tmp, MATRIX_NUM)) {
+	if (!tmp_data_alloc(&(dcht->tmp), MATRIX_NUM)) {
 		ms_free(dcht->msa->ms);
 		spi_matrix_setting(MATRIX_NUM, SHUTDOWN, 0x00);
 		if (errno)
