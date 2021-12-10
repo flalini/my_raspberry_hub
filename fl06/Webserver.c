@@ -113,7 +113,8 @@ void *clnt_connection(void *arg)
 		char	var[8];
 		int		state = 0;
 		int		num = 1;
-		strcpy(file_name, strtok(file_name, "?"));
+		strtok(file_name, "?");
+		strcpy(file_name, strtok(NULL, "?"));
 		check = file_name;
 		printf("file_name[%d] : %s\n", num, check);
 		while (strstr(check, "&") != NULL) {
@@ -124,7 +125,7 @@ void *clnt_connection(void *arg)
 		// 이후 led n번과 On/Off 분리하며 작업
 		while (num--) {
 			strcpy(opt, strtok(NULL, "="));
-			strcpy(var, strtok(NULL, "="));
+			strcpy(var, strtok(NULL, "&"));
 
 			printf("%s=%s\n", opt, var);
 			if (!strncmp(var, "On", 2))
