@@ -126,7 +126,7 @@ void *clnt_connection(void *arg)
 			strcpy(opt, strtok(NULL, "="));
 			strcpy(var, strtok(NULL, "&"));
 
-			printf("%s=%s\n", opt, var);
+			printf("[%d]%s=%s\n", num, opt, var);
 			if (!strncmp(var, "On", 2))
 				state = 1;
 			else if (!strncmp(var, "Off", 3))
