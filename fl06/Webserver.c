@@ -111,17 +111,19 @@ void *clnt_connection(void *arg)
 		char	*opt;
 		char	*var;
 		int		state;
-		strtok(file_name, "?");
+		strcpy(file_name, strtok(file_name, "?"));
+		int		len = strlen(file_name);
 		// 이후 led n번과 On/Off 분리하며 작업
-		while ((opt = strtok(NULL, "="))) {
+		do {
+			opt = strtok(NULL, "=");
 			var = strtok(NULL, "&");
-
+			len -= strlen(opt) + strlen(var) + 2;
 			printf("%s=%s\n", opt, var);
 
 			if (!strcmp(var, "On"))
 				state = 1;
 			else if (!strcmp(var, "Off"))
-				state = 1;
+				state = 0;
 			if (strstr(opt, "led") != NULL)
 				switch (opt[3])
 				{
@@ -144,7 +146,7 @@ void *clnt_connection(void *arg)
 				default:
 					break;
 				}
-		}
+		} while (len > 0);
 	}
 	
 	// 웹 페이지
