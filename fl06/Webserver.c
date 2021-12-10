@@ -111,42 +111,39 @@ void *clnt_connection(void *arg)
 		char	*opt;
 		char	*var;
 		int		state;
-		strcpy(file_name, strtok(file_name, "?"));
-		int		len = strlen(file_name);
+		opt = strtok(NULL, "?");
+//		strcpy(file_name, strtok(file_name, "?"));
+//		int		len = strlen(file_name);
 		// 이후 led n번과 On/Off 분리하며 작업
-		do {
-			opt = strtok(NULL, "=");
-			var = strtok(NULL, "&");
-			len -= strlen(opt) + strlen(var) + 2;
-			printf("%s=%s\n", opt, var);
-
-			if (!strcmp(var, "On"))
+		while ((opt = strstr(opt, "led"))) {
+			var = strstr(opt, "O");
+			if (!strncmp(var, "On", 2))
 				state = 1;
-			else if (!strcmp(var, "Off"))
+			else if (!strncmp(var, "Off", 3))
 				state = 0;
-			if (strstr(opt, "led") != NULL)
-				switch (opt[3])
-				{
-				case '1':
-					ledControl(LED1, state);
-					break;
-				
-				case '2':
-					ledControl(LED2, state);
-					break;
-				
-				case '3':
-					ledControl(LED3, state);
-					break;
-				
-				case '4':
-					ledControl(LED4, state);
-					break;
-				
-				default:
-					break;
-				}
-		} while (len > 0);
+			switch (opt[3])
+			{
+			case '1':
+				ledControl(LED1, state);
+				break;
+			
+			case '2':
+				ledControl(LED2, state);
+				break;
+			
+			case '3':
+				ledControl(LED3, state);
+				break;
+			
+			case '4':
+				ledControl(LED4, state);
+				break;
+			
+			default:
+				break;
+			}
+			++opt;
+		}
 	}
 	
 	// 웹 페이지
