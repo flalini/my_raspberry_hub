@@ -113,15 +113,14 @@ void *clnt_connection(void *arg)
 		char	var[8];
 		int		state = 0;
 		int		num = 1;
-		strtok(file_name, "?");
-		strcpy(file_name, strtok(NULL, "?"));
-		check = file_name;
+		check = strstr(file_name, "?") + 1;
 		printf("file_name[%d] : %s\n", num, check);
 		while (strstr(check, "&") != NULL) {
 			++num;
 			check = strstr(check, "&") + 1;
 			printf("file_name[%d] : %s\n", num, check);
 		}
+		strtok(file_name, "?");
 		// 이후 led n번과 On/Off 분리하며 작업
 		while (num--) {
 			strcpy(opt, strtok(NULL, "="));
