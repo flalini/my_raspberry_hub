@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 21:07:51 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 22:33:04 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/10 23:25:43 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	init_dcht(t_dcht *dcht)
 {
-	if (check_malloc((void **)&(dcht->msa), sizeof(t_ms_add))){
+	if (!check_malloc((void **)&(dcht->msa), sizeof(t_ms_add))){
 		if (errno)
 			perror("");
 		exit(errno);

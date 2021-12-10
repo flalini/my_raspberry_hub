@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:02:49 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 14:08:07 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 00:16:23 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void		switch_routin(unsigned char *flag)
 {
+	*flag = 0;
 	while (1) {
-		if (digitalRead(SW_PIN)) {
+		if (!digitalRead(SW_PIN)) {
 			*flag = 1;
 			delay(10);
+			while (!digitalRead(SW_PIN)) {
+				delay(10);
+			} 
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:22:51 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 22:44:52 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 00:16:31 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void			my_setup()
 {
 	pinMode(SW_PIN, INPUT);
-	pullUpDnControl(SW_PIN, PUD_UP);
 	pinMode(DATA_PIN, OUTPUT);
 	pinMode(CLOCK_PIN, OUTPUT);
 	pinMode(LOAD_PIN, OUTPUT);

@@ -6,7 +6,7 @@
 #    By: ijang <flan101544@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/10 12:57:12 by ijang             #+#    #+#              #
-#    Updated: 2021/12/10 22:18:06 by ijang            ###   ########.fr        #
+#    Updated: 2021/12/10 22:50:26 by ijang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ = $(SRC:c=o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(RUNOBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 run: $(NAME)
 	./$(NAME)
