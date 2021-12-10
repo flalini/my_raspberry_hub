@@ -39,7 +39,10 @@ int main(int argc, char **argv)
 	}
 	
 	wiringPiSetup();
-	pinMode(1, OUTPUT);
+	pinMode(LED1, OUTPUT);
+	pinMode(LED2, OUTPUT);
+	pinMode(LED3, OUTPUT);
+	pinMode(LED4, OUTPUT);
 	
 	serv_sock = socket(AF_INET, SOCK_STREAM, 0);
 	if(serv_sock < 0) {
