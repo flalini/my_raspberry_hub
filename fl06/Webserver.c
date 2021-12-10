@@ -113,7 +113,7 @@ void *clnt_connection(void *arg)
 		char	var[8];
 		int		state = 0;
 		int		num = 1;
-		strcpy(file_name, strtok(NULL, "?"));
+		strcpy(file_name, strtok(file_name, "?"));
 		check = file_name;
 		printf("file_name[%d] : %s\n", num, check);
 		while (strstr(check, "&") != NULL) {
