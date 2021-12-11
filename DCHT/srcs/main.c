@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:22:51 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/11 16:05:34 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 16:07:25 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		main(int argc, char **argv)
 		exit(-1);
 	if (argc == 2) {
 		tmp = atoi(argv[1]);
-		if (tmp >= 0x00 && tmp <= 0x0f)
+		if (tmp <= 0x0f)
 			brightness = tmp;
 	}
 	my_setup(brightness);
