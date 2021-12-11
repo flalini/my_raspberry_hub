@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 13:04:09 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 21:12:39 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 16:05:59 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "dcht_struct.h"
 # include "switch.h"
 
-void			my_setup();
+void			my_setup(unsigned char brightness);
 void			error_exit(t_dcht *dcht);
 void			display_time(t_dcht *dcht);
 void			display_ht(t_dcht *dcht);

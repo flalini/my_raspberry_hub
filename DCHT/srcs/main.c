@@ -6,13 +6,13 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:22:51 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/11 15:57:05 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 16:05:34 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dcht.h"
 
-void			my_setup()
+void			my_setup(unsigned char brightness)
 {
 	pinMode(SW_PIN, INPUT);
 	pinMode(DATA_PIN, OUTPUT);
@@ -20,7 +20,7 @@ void			my_setup()
 	pinMode(LOAD_PIN, OUTPUT);
 	spi_matrix_setting(MATRIX_NUM, DECODE_MODE, 0x00);
 	//	don't use Decode-Mode
-	spi_matrix_setting(MATRIX_NUM, INTENSITY, 0x01);
+	spi_matrix_setting(MATRIX_NUM, INTENSITY, brightness);
 	//	use 0x08 Intensity level (0x00 to 0x0F)
 	spi_matrix_setting(MATRIX_NUM, SCAN_LIMIT, 0x07);
 	//	use full Scan-Limit Display digit (0 to 7)
@@ -84,14 +84,21 @@ void			display_ht(t_dcht *dcht)
 	dcht->sw_flag = 0;
 }
 
-int		main(void)
+int		main(int argc, char **argv)
 {
-	t_dcht		dcht;
+	t_dcht			dcht;
+	unsigned char	brightness = 0x08;
+	unsigned char	tmp;
 
 	errno = 0;
 	if (wiringPiSetup() < 0)
 		exit(-1);
-	my_setup();
+	if (argc == 2) {
+		tmp = atoi(argv[1]);
+		if (tmp >= 0x00 && tmp <= 0x0f)
+			brightness = tmp;
+	}
+	my_setup(brightness);
 	init_dcht(&dcht);
 
 	if ((errno = dht11_thread_start(&(dcht.dht11), &(dcht.pid[0]))))
