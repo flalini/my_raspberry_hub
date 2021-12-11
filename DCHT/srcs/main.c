@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:22:51 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/11 09:13:11 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 15:57:05 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			display_time(t_dcht *dcht)
 		if (tm->tm_min != dcht->tm.tm_min ||
 				tm->tm_hour != dcht->tm.tm_hour ||
 				tm->tm_yday != dcht->tm.tm_yday ||
-				!((tm->tm_sec ^ dcht->tm.tm_sec) & 1)) {
+				((tm->tm_sec ^ dcht->tm.tm_sec) & 1)) {
 			dcht->tm = *tm;
 			make_clock(dcht->tmp, tm);
 			matrix_change(dcht->msa, dcht->tmp);
