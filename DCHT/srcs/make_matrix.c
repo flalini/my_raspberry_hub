@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 13:59:03 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/11 00:27:48 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 09:14:38 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,10 @@ void	make_clock(unsigned char **tmp, struct tm *tm)
 		tmp[i][3] |= g_digit[tm->tm_min % 10][i];
 	}
 	tmp[7][0] |= 0b100;
-	tmp[3][2] |= 0b1;
-	tmp[5][2] |= 0b1;
+	if (tm->tm_sec & 1) {
+		tmp[3][2] |= 0b1;
+		tmp[5][2] |= 0b1;
+	}
 }
 
 void	make_ht(unsigned char **tmp, int h, int t)

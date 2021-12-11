@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:14:20 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 13:51:30 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 00:47:11 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "pin.h"
 
 # define MAX_TIME	40
-# define DHT11_SEP	20
+# define DHT11_SEP	30
 
 typedef union	u_dht11_val
 {

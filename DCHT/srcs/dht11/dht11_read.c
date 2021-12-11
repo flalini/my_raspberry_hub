@@ -6,7 +6,7 @@
 /*   By: ijang <flan101544@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 11:46:39 by ijang             #+#    #+#             */
-/*   Updated: 2021/12/10 13:00:24 by ijang            ###   ########.fr       */
+/*   Updated: 2021/12/11 00:46:59 by ijang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ uint8_t		count_dht11_bit(void)
 
 	return counter;
 }
-
+//#include <stdio.h>
 void	dht11_read_val(t_dht11 *dht11)
 {
 	uint8_t	val[5] = {0, 0, 0, 0, 0};
@@ -50,13 +50,14 @@ void	dht11_read_val(t_dht11 *dht11)
 
 	while (++i < MAX_TIME) {
 		counter = count_dht11_bit();
+		//printf("%02d[%02d]", i, counter);
 		if (counter == 0xFF)
 			return ;
 		val[i / 8] <<= 1;
 		if (counter > DHT11_SEP)
 			val[i / 8] |= 1;
 	}
-
+	//printf("\n[%03d][%03d]\n", val[0], val[2]);
 	if (val[4] != ((val[0] + val[1] + val[2] + val[3]) & 0xFF))
 		return ;
 	if (dht11->data.for_check != *(uint32_t *)val) {
