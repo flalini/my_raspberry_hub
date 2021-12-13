@@ -6,7 +6,7 @@
 #    By: ijang <flan101544@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/10 12:57:12 by ijang             #+#    #+#              #
-#    Updated: 2021/12/10 22:50:26 by ijang            ###   ########.fr        #
+#    Updated: 2021/12/11 16:30:21 by ijang            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ UTILS =		util
 DCHT =		dcht_struct make_matrix main
 
 SRC =		$(addsuffix .c, $(addprefix srcs/dotmatrix/, $(DOTMATRIX))) \
-			$(addsuffix .c, $(addprefix srcs/dht11/, $(DHT11))) 		\
-			$(addsuffix .c, $(addprefix srcs/switch/, $(SW))) 		\
+			$(addsuffix .c, $(addprefix srcs/dht11/, $(DHT11)))			\
+			$(addsuffix .c, $(addprefix srcs/switch/, $(SW)))			\
 			$(addsuffix .c, $(addprefix srcs/utils/, $(UTILS)))			\
 			$(addsuffix .c, $(addprefix srcs/, $(DCHT)))
 
